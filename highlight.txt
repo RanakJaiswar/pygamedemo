@@ -1,0 +1,24 @@
+//drawing the bullets
+	def draw(self,win):
+			pygame.draw.circle(win,self.color,(self.x,self.y),self.radius)
+//appending bullets function
+	(So the funtion is written to store bullets is list bullets[] and giving them position according to character position , size, color,and in which direction  it would go (where the character is facing))
+	bullets.append(projectile(round(man.x+man.width//2),round(man.y+man.heigth//2),6,(255,0,0),facing))
+	we would redraw this in your game window using the redraw function(view the code)
+
+//making the character jump
+	it was the toughest part to code but thanks to stackoverflow and youtube here is what i came up with
+	if keys[pygame.K_UP]:(key for jump)
+			man.isJump=True(whether character is already in air or not so player cannot jump while its in air)
+			man.right=False(locking right key)
+			man.left=False(locking left key)
+	else:
+		if man.jumpcount>=-10:()
+			neg=1(to move upwards in first half of the jump)
+			if man.jumpcount<0:
+				neg=-1(to start to move down in second half of jump)
+			man.y-=(man.jumpcount**2)*0.5*neg(parabolic equation for jump so the character would follow a parabolic path rather than simple vertical path in air)
+			man.jumpcount-=1
+		else:(no longer jumping)
+			man.isJump=False
+			man.jumpcount=10
